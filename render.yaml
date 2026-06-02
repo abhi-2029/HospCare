@@ -28,7 +28,4 @@ services:
         sync: false
         placeholder: "Enter your Google Gemini API Key"
       - key: FLASK_PREDICTION_URL
-        fromService:
-          type: web
-          name: hospcare-ai
-          property: url
+        value: http://hospcare-ai:10000/api/predict
