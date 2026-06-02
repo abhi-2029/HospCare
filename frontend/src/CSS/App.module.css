@@ -1,0 +1,94 @@
+/* 📌 App Container */
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left !important;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  transition: background-color 0.5s ease-in-out;
+}
+
+/* 🎬 Fade-in Animation for Page Components */
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+/* When the component is visible, apply these styles */
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 📌 Sidebar Transition */
+.sidebar {
+  position: fixed;
+  top: 67px;
+  right: -250px;
+  width: 150px;
+  height: 60vh;
+  background-color: #0b78e4;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  border-radius: 3px;
+  transition: right 0.5s ease-in-out;
+}
+
+.sidebarOpen {
+  right: 0;
+}
+
+/* 🏥 Page Content Animation */
+.pageContent {
+  margin-top: 70px;
+  padding: 20px;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Shift content when sidebar opens */
+.sidebarOpen~.pageContent {
+  transform: translateX(-100px);
+}
+
+/* 📱 Responsive Design */
+@media screen and (max-width: 768px) {
+  .fade-in {
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+  }
+
+  .appContainer {
+    padding: 10px;
+  }
+
+  .sidebar {
+    width: 120px;
+  }
+
+  .pageContent {
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .fade-in {
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  }
+
+  .appContainer {
+    padding: 5px;
+  }
+
+  .sidebar {
+    width: 100px;
+  }
+
+  .pageContent {
+    padding: 10px;
+  }
+}

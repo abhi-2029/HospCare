@@ -1,0 +1,118 @@
+/* 🏥 Navbar Container */
+.navContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(65, 49, 244);
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(255, 249, 249, 0.1);
+  z-index: 1001;
+
+}
+
+.logoutBtn {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+/* 🔍 Search Bar */
+.searchBar {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.searchBar input {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.brandName {
+  color: white;
+  margin-left: 5px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: x-large;
+  border-radius: 5px;
+  width: 160px;
+  box-shadow: 2px 2px 2px black;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  border-radius: 50px;
+  height: 50px;
+  margin-left: 30px;
+}
+
+/* 🍔 Sidebar Menu Button */
+.menuButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  margin-right: 20px;
+  cursor: pointer;
+  margin-left: 20px;
+  color: rgb(19, 19, 19);
+}
+
+/* 📌 Sidebar Styles (Now opens from LEFT) */
+.sidebar {
+  position: fixed;
+  top: 67px;
+  right: -250px;
+  /* Now hidden from the left */
+  width: 150px;
+  height: 67vh;
+  background-color: rgba(65, 49, 244, 0.996);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  border-radius: 3px;
+  transition: right 0.8s ease;
+  z-index: 1050;
+  /* Smooth transition */
+}
+
+.sidebar.open {
+  right: 0;
+}
+
+/* Sidebar Navigation Links */
+.navList {
+  list-style: none;
+  padding: 0;
+}
+
+.navList li {
+  padding: 15px;
+  text-align: left;
+}
+
+.navList li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+}
+
+.navList li a:hover {
+  background-color: #ffffff;
+  border-radius: 2px;
+  color: black;
+}

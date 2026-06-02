@@ -1,0 +1,97 @@
+.card {
+  max-width: 500px;
+  margin: auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  color: #007bff;
+  margin-bottom: 5px;
+}
+
+.header p {
+  font-size: 14px;
+  color: #666;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroup label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.inputGroup input,
+.inputGroup select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox input {
+  width: 16px;
+  height: 16px;
+}
+
+.btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  width: 100%;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 90%;
+  }
+
+  .btn {
+    font-size: 16px;
+  }
+}

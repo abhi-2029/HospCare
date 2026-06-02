@@ -1,0 +1,504 @@
+.treatmentContainer {
+  position: relative;
+  background: radial-gradient(circle at top left, rgba(102, 126, 234, 0.18), transparent 35%),
+    linear-gradient(180deg, #eef3ff 0%, #f7fbff 50%, #ffffff 100%);
+  min-height: 100vh;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.treatmentContainer::before {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  top: -80px;
+  right: -80px;
+  background: rgba(58, 111, 245, 0.14);
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 0;
+}
+
+.treatmentContainer::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  bottom: -80px;
+  left: -80px;
+  background: rgba(46, 189, 133, 0.12);
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 0;
+}
+
+.pageHeader {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 30px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #3a6ff5 0%, #6a8efa 100%);
+  color: white;
+  box-shadow: 0 20px 50px rgba(29, 59, 152, 0.18);
+  gap: 20px;
+}
+
+.pageTitle {
+  font-size: clamp(2rem, 2.5vw, 2.6rem);
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.03em;
+}
+
+.pageSubtitle {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.75;
+  max-width: 620px;
+  opacity: 0.92;
+}
+
+.headerBadge {
+  background: rgba(255, 255, 255, 0.16);
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.topGrid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 20px;
+}
+
+.actionPanelGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.patientCard,
+.metricsCard,
+.insightCard,
+.actionPanel,
+.notesCard,
+.highlightCard {
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(36, 74, 148, 0.08);
+}
+
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #22315c;
+}
+
+.patientInfoRow,
+.metricRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.patientInfoList {
+  display: grid;
+  gap: 14px;
+}
+
+.patientInfoRow span,
+.metricLabel {
+  color: #5f6c89;
+}
+
+.patientInfoRow strong,
+.metricValue {
+  color: #1f3259;
+  font-size: 1rem;
+}
+
+.patientBadgeGroup {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.patientBadge {
+  background: #eff5ff;
+  color: #3067f1;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.highlightCard {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), #f5f8ff 100%);
+  border: 1px solid rgba(68, 105, 248, 0.14);
+  border-radius: 28px;
+  padding: 26px;
+  box-shadow: 0 24px 60px rgba(33, 70, 172, 0.08);
+  position: relative;
+  z-index: 1;
+}
+
+.stepGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.stepItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(67, 107, 255, 0.08);
+}
+
+.stepIndex {
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #3a6ff5;
+  color: white;
+  font-weight: 800;
+}
+
+.stepLabel {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1f3259;
+  margin-bottom: 4px;
+}
+
+.stepHint {
+  color: #5f6c89;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.tipNote {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: #eef4ff;
+  border: 1px solid rgba(58, 111, 245, 0.12);
+  color: #324270;
+  font-size: 0.95rem;
+}
+
+.metricRow {
+  gap: 24px;
+}
+
+.metricValue {
+  font-size: 2.1rem;
+  font-weight: 700;
+}
+
+.metricLabel {
+  font-size: 0.92rem;
+}
+
+.metricNote {
+  margin-top: 16px;
+  color: #657195;
+  line-height: 1.7;
+}
+
+.lowStockList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.lowStockList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: #f5f7ff;
+  color: #1f3259;
+  font-weight: 600;
+}
+
+.emptyState {
+  background: #f4f7ff;
+  border: 1px dashed #dbe4ff;
+  border-radius: 20px;
+  padding: 28px;
+  text-align: center;
+  color: #5f6c89;
+}
+
+.emptyState p {
+  margin-bottom: 14px;
+}
+
+.secondaryButton,
+.actionButton,
+.actionButtonSecondary,
+.removeButton,
+.submitButton {
+  border: none;
+  border-radius: 30px;
+  font-weight: 700;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  cursor: pointer;
+}
+
+.actionButton,
+.actionButtonSecondary,
+.submitButton {
+  padding: 12px 24px;
+}
+
+.actionButton {
+  background: #3a6ff5;
+  color: white;
+  box-shadow: 0 12px 24px rgba(58, 111, 245, 0.25);
+}
+
+.actionButton:hover,
+.actionButtonSecondary:hover,
+.submitButton:hover,
+.secondaryButton:hover,
+.removeButton:hover {
+  transform: translateY(-2px);
+}
+
+.actionButtonSecondary {
+  background: #5c82f1;
+  color: white;
+  box-shadow: 0 12px 24px rgba(92, 130, 241, 0.2);
+}
+
+.secondaryButton {
+  background: transparent;
+  color: #3a6ff5;
+  padding: 10px 22px;
+  border: 1px solid #dbe4ff;
+}
+
+.removeButton {
+  background: #fa6b6b;
+  color: white;
+  padding: 10px 18px;
+}
+
+.submitButton {
+  background: #2ebd85;
+  color: white;
+}
+
+.actionsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.sectionTitle {
+  margin: 0 0 6px;
+  color: #21325a;
+}
+
+.sectionText {
+  margin: 0;
+  color: #5f6c89;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.customTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 14px;
+}
+
+.customTable th,
+.customTable td {
+  padding: 16px 18px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.customTable thead th {
+  color: #4e5d7a;
+  font-weight: 700;
+  border-bottom: none;
+}
+
+.customTable tbody tr {
+  background: white;
+  border-radius: 22px;
+  box-shadow: 0 12px 30px rgba(44, 70, 170, 0.05);
+}
+
+.customTable tbody tr td {
+  border: none;
+}
+
+.stockBadge {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 14px;
+  background: #eef5ff;
+  color: #3255b3;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.notesCard {
+  min-height: 240px;
+}
+
+.notesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.notesList li {
+  padding: 14px 18px;
+  background: #f5f8ff;
+  border-radius: 18px;
+  color: #36456a;
+  font-weight: 600;
+}
+
+.inputField {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #e1e6ff;
+  border-radius: 18px;
+  font-size: 0.95rem;
+  color: #2d3b58;
+  background: #fafbff;
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: #6a8efa;
+  box-shadow: 0 0 0 4px rgba(106, 142, 250, 0.12);
+}
+
+.suggestionCell {
+  position: relative;
+}
+
+.suggestionList {
+  position: absolute;
+  top: 58px;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(62, 100, 216, 0.12);
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.suggestionList li {
+  padding: 12px 16px;
+  cursor: pointer;
+  color: #24365f;
+}
+
+.suggestionList li:hover {
+  background: #f2f4ff;
+}
+
+.footerBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 26px;
+  background: linear-gradient(135deg, #3a6ff5 8%, #6a8efa 100%);
+  border-radius: 24px;
+  color: white;
+  box-shadow: 0 20px 50px rgba(58, 111, 245, 0.18);
+}
+
+.footerBar h3 {
+  margin: 0 0 6px;
+}
+
+.footerBar p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+@media (max-width: 1120px) {
+  .topGrid,
+  .actionPanelGrid,
+  .summaryGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+  .pageHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .actionsHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .footerBar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 640px) {
+  .treatmentContainer {
+    padding: 20px;
+  }
+
+  .customTable th,
+  .customTable td {
+    padding: 14px 12px;
+  }
+}

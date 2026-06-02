@@ -1,0 +1,90 @@
+.main {
+  font-family: "Segoe UI", sans-serif;
+  background: #f5f8fc;
+  padding-bottom: 40px;
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #0f766e, #0ea5e9);
+  color: white;
+  border-radius: 0 0 20px 20px;
+}
+
+.hero img {
+  width: 40%;
+  border-radius: 15px;
+}
+
+.heroText h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+/* SECTIONS */
+.section {
+  padding: 40px;
+  text-align: center;
+}
+
+/* FEATURES GRID */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 15px;
+  padding: 20px 40px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* SPLIT SECTION */
+.splitSection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 40px;
+}
+
+.splitSection img {
+  width: 40%;
+  border-radius: 15px;
+}
+
+/* TEAM */
+.team {
+  text-align: center;
+  padding: 40px;
+}
+
+.teamCard {
+  display: inline-block;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.teamCard img {
+  width: 120px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  background: #0f172a;
+  color: white;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 15px;
+}
