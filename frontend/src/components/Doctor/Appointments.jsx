@@ -29,21 +29,21 @@ function Appointments() {
 
     if (firstBatch.length > 0 && category === "doctor") {
       await fetch(
-        `http://localhost:5000/api/doctors/appointment/Status/1?userEmail=${userEmail}&number1=0&number2=5`,
+        `${window.API_BASE_URL}/api/doctors/appointment/Status/1?userEmail=${userEmail}&number1=0&number2=5`,
         { method: "POST", headers: { "Content-Type": "application/json" } }
       );
     }
 
     if (firstBatch2.length > 0 && category === "doctor") {
       await fetch(
-        `http://localhost:5000/api/doctors/appointment/Status/2?userEmail=${userEmail}&number1=5&number2=15`,
+        `${window.API_BASE_URL}/api/doctors/appointment/Status/2?userEmail=${userEmail}&number1=5&number2=15`,
         { method: "POST", headers: { "Content-Type": "application/json" } }
       );
     }
 
     if (firstBatch3.length > 0 && category === "doctor") {
       await fetch(
-        `http://localhost:5000/api/doctors/appointment/Status/3?userEmail=${userEmail}&number1=15&number2=50`,
+        `${window.API_BASE_URL}/api/doctors/appointment/Status/3?userEmail=${userEmail}&number1=15&number2=50`,
         { method: "POST", headers: { "Content-Type": "application/json" } }
       );
     }
@@ -68,7 +68,7 @@ function Appointments() {
       console.log("User category:", category);
       if (category === "patient") {
         const response = await fetch(
-          `http://localhost:5000/api/doctors/appointment/getTime?userEmail=${userEmail}&doctorEmail=${doctorEmail}&category=${category}&Status=${status}`,
+          `${window.API_BASE_URL}/api/doctors/appointment/getTime?userEmail=${userEmail}&doctorEmail=${doctorEmail}&category=${category}&Status=${status}`,
           { method: "GET", headers: { "Content-Type": "application/json" } }
         );
 
@@ -107,7 +107,7 @@ function Appointments() {
         const { email: userEmail, category, doctorEmail } = user;
 
         const response = await fetch(
-          `http://localhost:5000/api/doctors/appointment?userEmail=${userEmail}&doctorEmail=${doctorEmail}&category=${category}&Token=${token}`,
+          `${window.API_BASE_URL}/api/doctors/appointment?userEmail=${userEmail}&doctorEmail=${doctorEmail}&category=${category}&Token=${token}`,
           { method: "GET", headers: { "Content-Type": "application/json" } }
         );
 

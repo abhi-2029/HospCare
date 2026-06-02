@@ -27,7 +27,7 @@ function Appointment({ doctor, setBookAppointment }) {
     console.log("Booking appointment with data:", appointmentData);
     try {
       const token=localStorage.getItem("Token");
-      const response = await fetch("http://localhost:5000/api/bookappointment", {
+      const response = await fetch(`${window.API_BASE_URL}/api/bookappointment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -38,7 +38,7 @@ export default function Dashboard() {
   const fetchData = async () => {
     try {
       const res = await fetch(
-        "http://localhost:5000/api/Medical/FindTreatment"
+        `${window.API_BASE_URL}/api/Medical/FindTreatment`
       );
       const data = await res.json();
       setPatients(data.data);

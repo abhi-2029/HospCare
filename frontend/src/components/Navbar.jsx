@@ -27,7 +27,7 @@ function Navbar({ login, setlogin }) {
         }
 
         const response = await fetch(
-          "http://localhost:5000/api/auth/User",
+          `${window.API_BASE_URL}/api/auth/User`,
           {
             method: "POST",
             headers: {

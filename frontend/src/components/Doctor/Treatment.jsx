@@ -33,7 +33,7 @@ function Treatment() {
         const user = JSON.parse(localStorage.getItem("Data")) || {};
         const { email, zone } = user;
 
-        const res = await fetch("http://localhost:5000/api/Medical/Medicine", {
+        const res = await fetch(`${window.API_BASE_URL}/api/Medical/Medicine`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -150,7 +150,7 @@ function Treatment() {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/api/Medical/SubmitTreatment", {
+      const res = await fetch(`${window.API_BASE_URL}/api/Medical/SubmitTreatment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -174,7 +174,7 @@ function Treatment() {
 
       setAllMedicines(updatedMedicines);
 
-      await fetch("http://localhost:5000/api/Medical/MedicineUpdate", {
+      await fetch(`${window.API_BASE_URL}/api/Medical/MedicineUpdate`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,0 +1,34 @@
+services:
+  # 1. Flask Python AI Service
+  - type: web
+    name: hospcare-ai
+    env: python
+    rootDir: AI/ML
+    buildCommand: pip install -r requirements_flask_api.txt
+    startCommand: python medicine_prediction_flask_api.py
+    envVars:
+      - key: PORT
+        value: 10000
+
+  # 2. Node.js Express Backend Service
+  - type: web
+    name: hospcare-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: MONGO_URI
+        sync: false
+        placeholder: "Enter your MongoDB Atlas Connection String"
+      - key: JWT_SECRET
+        sync: false
+        placeholder: "Enter a random secure signing key"
+      - key: GEMINI_API_KEY
+        sync: false
+        placeholder: "Enter your Google Gemini API Key"
+      - key: FLASK_PREDICTION_URL
+        fromService:
+          type: web
+          name: hospcare-ai
+          property: url
