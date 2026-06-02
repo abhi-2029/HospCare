@@ -1,28 +1,67 @@
 # 🏥 HospCare: Smart Hospital Management & AI-Powered Diagnosis System
 
+<p align="center">
+  <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React Badge" />
+  <img src="https://img.shields.io/badge/Vite-6.2-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite Badge" />
+  <img src="https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js Badge" />
+  <img src="https://img.shields.io/badge/Express.js-4.21-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express Badge" />
+  <img src="https://img.shields.io/badge/MongoDB-6.15-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB Badge" />
+  <img src="https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python Badge" />
+  <img src="https://img.shields.io/badge/Flask-3.0-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask Badge" />
+  <img src="https://img.shields.io/badge/Gemini_AI-API-8E75C2?style=for-the-badge&logo=google&logoColor=white" alt="Gemini Badge" />
+</p>
+
 HospCare is a modern, comprehensive, and intelligent Hospital Management System. It connects patients, doctors, and hospital administrators in a unified platform, utilizing Machine Learning and Generative AI to provide automated diagnostic assistance, medicine prescription predictions, and seamless appointment scheduling.
+
+---
+
+## 📸 Architecture & Data Flow
+
+Below is the layout of how the frontend, backend, database, and machine learning components communicate with one another:
+
+```mermaid
+graph TD
+    subgraph Client Layer
+        A[React Frontend <br> Vite + Tailwind + Bootstrap]
+    end
+
+    subgraph Service Layer
+        B[Node.js Express Backend <br> JWT Authentication]
+        D[Flask AI Engine <br> Random Forest Models]
+    end
+
+    subgraph Database & AI Layer
+        C[(MongoDB Atlas)]
+        E[Google Gemini API]
+    end
+
+    A -->|1. Client Requests| B
+    B -->|2. Queries & Writes| C
+    B -->|3. Smart Consultations| E
+    B -->|4. Vital Checks| D
+```
 
 ---
 
 ## 🚀 Key Features
 
-### 💻 Frontend (React + Vite + Tailwind CSS)
-*   **Intuitive Patient Portal**: Check profile, view medical history, book appointments, and interact with the AI assistant.
-*   **Doctor Dashboard**: View scheduled appointments, review patient records, and submit treatments and prescriptions.
-*   **AI Medical Chatbot**: A premium conversational AI interface helper to check symptoms, answer common health questions, and guide patients.
-*   **Analytics & Visualizations**: Dynamic health tracking, vitals charts, and metrics utilizing Chart.js and Recharts.
-*   **Smooth UX/UI**: Animated transitions powered by Framer Motion and a responsive interface designed using a blend of Bootstrap and Tailwind CSS.
+### 💻 Frontend (React SPA)
+*   **👤 Intuitive Patient Portal**: Check medical records, fill symptoms logs, book consultations, and view real-time feedback.
+*   **🩺 Doctor Dashboard**: View scheduled appointments, review patient records, and submit treatments and prescriptions.
+*   **💬 AI Medical Chatbot**: A premium conversational helper to check symptoms, answer common health questions, and guide patients.
+*   **📊 Analytics & Visualizations**: Dynamic health tracking, vitals charts, and metrics utilizing Chart.js and Recharts.
+*   **✨ Smooth UX/UI**: Animated transitions powered by Framer Motion and a responsive interface designed using a blend of Bootstrap and Tailwind CSS.
 
-### 🛡️ Backend REST API (Node.js + Express + MongoDB)
-*   **Secure Authentication**: JWT-based user session management with password hashing via Bcrypt.
-*   **Gemini AI Integration**: Powered by `@google/generative-ai` for intelligent medical responses and advice.
-*   **Email Notifications**: Appointment and medical notification alerts using Nodemailer.
-*   **Data Models**: Structured Mongoose schemas for Users (Patients/Doctors), Hospitals, Districts, States, Appointments, and Alerts.
+### 🛡️ Backend REST API (Node.js + Express)
+*   **🔑 Secure Authentication**: JWT-based user session management with password hashing via Bcrypt.
+*   **🧠 Gemini AI Integration**: Powered by `@google/generative-ai` for intelligent medical responses and advice.
+*   **✉️ Email Notifications**: Automatic appointment booking confirmations and medical notifications using Nodemailer.
+*   **🗄️ Structured Schemas**: Data models for Users (Patients/Doctors), Hospitals, Districts, States, Appointments, and Alerts.
 
-### 🤖 AI/ML Engine (Python + Flask + Scikit-Learn)
-*   **Prescription Prediction Model**: A Random Forest classifier predicting optimal medications, dosage, route, and frequency based on 30+ patient vital parameters and symptom inputs.
-*   **High Accuracy**: 100% accuracy on medicine prediction and 99.9% on frequency.
-*   **Interactive Web Client**: A testing client (`api_client.html`) to test prediction queries outside the main app.
+### 🤖 AI/ML Engine (Python + Flask)
+*   **💊 Prescription Prediction Model**: A Random Forest classifier predicting optimal medications, dosage, route, and frequency based on 30+ patient vital parameters and symptom inputs.
+*   **🎯 High Accuracy**: 100% accuracy on medicine prediction and 99.9% on frequency.
+*   **🔬 Interactive Web Client**: A testing client (`api_client.html`) to test prediction queries outside the main app.
 
 ---
 
@@ -59,16 +98,6 @@ HospCare/
 
 ---
 
-## 🛠️ Technology Stack
-
-| Component | Technologies Used |
-| :--- | :--- |
-| **Frontend** | React 19, Vite, Tailwind CSS, Bootstrap 5, Framer Motion, Chart.js, Recharts, Axios, React Icons, TensorFlow.js |
-| **Backend** | Node.js, Express, MongoDB (Mongoose), JWT, Bcrypt, Multer, Nodemailer, Gemini API |
-| **AI/ML** | Python, Flask, Pandas, NumPy, Scikit-Learn (Random Forest) |
-
----
-
 ## ⚡ Setup & Installation
 
 ### 📋 Prerequisites
@@ -95,7 +124,7 @@ HospCare/
    ```bash
    python medicine_prediction_flask_api.py
    ```
-   *The ML engine will run on: `http://127.0.0.1:5000`*
+   *The ML engine will run on: `http://127.0.0.1:5001`*
 
 ---
 
@@ -125,7 +154,7 @@ HospCare/
    ```bash
    npm start
    ```
-   *The Node backend server will run on: `http://localhost:5000` (or your configured port)*
+   *The Node backend server will run on: `http://localhost:5000`*
 
 ---
 
@@ -142,7 +171,23 @@ HospCare/
    ```bash
    npm run dev
    ```
-   *Access the web application at the local address printed by Vite (typically `http://localhost:5173`)*
+   *Access the web application at `http://localhost:5173`*
+
+---
+
+## ⚙️ Environment Variables
+
+Below is the list of environment configurations needed to run the Express backend:
+
+| Key | Description | Example |
+| :--- | :--- | :--- |
+| `PORT` | The port the Node server listens to | `5000` |
+| `MONGO_URI` | MongoDB Connection URL | `mongodb+srv://...` |
+| `JWT_SECRET` | Secret token signing key | `SuperSecretKey123` |
+| `GEMINI_API_KEY` | Google Gemini developer API Key | `AIzaSy...` |
+| `EMAIL_USER` | Email used for Nodemailer alerts | `hospcare@gmail.com` |
+| `EMAIL_PASS` | Nodemailer App-specific password | `xxxx xxxx xxxx xxxx` |
+| `FLASK_PREDICTION_URL` | URL to reach the Python AI Engine | `http://127.0.0.1:5001/api/predict` |
 
 ---
 
