@@ -1,6 +1,7 @@
 
 import connectDB from "../utils/lib.js";
 import { UpdateTotalPatient } from "../Algorithm/TimeSchedular.js";
+import { sendAppointmentStatusUpdateEmail } from "../utils/mailer.js";
 
 const updateBatchStatus = async (req, res, batchNumber) => {
   try {
@@ -33,6 +34,19 @@ const updateBatchStatus = async (req, res, batchNumber) => {
       { _id: { $in: ids } },
       { $set: { status:batchNumber } }
     );
+
+    // Send email notification to each patient in the updated batch
+    batchAppointments.forEach((appointment) => {
+      if (appointment.userEmail) {
+        sendAppointmentStatusUpdateEmail({
+          userEmail: appointment.userEmail,
+          doctorEmail: appointment.doctorEmail || userEmail,
+          status: batchNumber,
+        }).catch((err) => {
+          console.error(`Failed to send status update email to ${appointment.userEmail}:`, err.message);
+        });
+      }
+    });
 
     // Run algorithms
     

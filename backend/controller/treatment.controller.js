@@ -1,6 +1,7 @@
 import express from "express";
 import connectDB from "../utils/lib.js";
 import jwt from "jsonwebtoken";
+import { sendAppointmentConfirmationEmail, sendDoctorBookingNotificationEmail } from "../utils/mailer.js";
 
 
 
@@ -63,6 +64,15 @@ const bookappointment = async (req, res, next) => {
     if (!inserted.acknowledged) {
       return res.status(400).json({ message: "Booking failed" });
     }
+
+    // Trigger email notifications asynchronously so it doesn't block response
+    sendAppointmentConfirmationEmail({ userEmail, doctorEmail, doctorOrganization, serviceType }).catch(err => {
+      console.error("Failed to send patient appointment email:", err.message);
+    });
+
+    sendDoctorBookingNotificationEmail({ userEmail, doctorEmail, userAge, userMobile, serviceType }).catch(err => {
+      console.error("Failed to send doctor appointment email:", err.message);
+    });
 
     res.status(200).json({ message: "Appointment booked successfully" });
 

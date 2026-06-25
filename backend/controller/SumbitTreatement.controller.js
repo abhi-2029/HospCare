@@ -133,7 +133,7 @@ const SubmitTreatmentRecord = async (req, res) => {
 
 const FindPatientRecord = async (req, res) => {
 
-  console.log("📥 Fetching Treatment Records From Zone1 to Zone9");
+  console.log("📥 Fetching Treatment Records and Zone Data");
 
 try {
   const db = await connectDB();
@@ -168,6 +168,17 @@ try {
     acc[curr.zone] = curr.records;
     return acc;
   }, {});
+
+  // Fetch all patient records from patientsDB
+  const patientRecords = await db.collection("patientsDB").find({}).toArray();
+
+  // Distribute patient records to their respective zones
+  patientRecords.forEach((record) => {
+    const recordZone = record.zone;
+    if (recordZone && responseData[recordZone]) {
+      responseData[recordZone].push(record);
+    }
+  });
 
   res.status(200).json({
     success: true,

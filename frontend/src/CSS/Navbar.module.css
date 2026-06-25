@@ -1,4 +1,4 @@
-/* 🏥 Navbar Container */
+/* 🏥 Glassmorphic Navbar Container */
 .navContainer {
   position: fixed;
   top: 0;
@@ -7,22 +7,37 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(65, 49, 244);
-  padding: 10px;
-  box-shadow: 0 4px 6px rgba(255, 249, 249, 0.1);
+  background: rgba(17, 24, 39, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 12px 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   z-index: 1001;
-
+  transition: all 0.3s ease;
 }
 
+/* Logout Button */
 .logoutBtn {
   background: none;
   border: none;
-  color: inherit;
+  color: #ef4444 !important;
   font: inherit;
   cursor: pointer;
   width: 100%;
   text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
+
+.logoutBtn:hover {
+  background: rgba(239, 68, 68, 0.1) !important;
+}
+
 /* 🔍 Search Bar */
 .searchBar {
   flex: 1;
@@ -30,22 +45,19 @@
   justify-content: center;
 }
 
-.searchBar input {
-  width: 100%;
-  max-width: 300px;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
+/* Brand Name with Indigo-to-Cyan Gradient */
 .brandName {
   color: white;
-  margin-left: 5px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: x-large;
-  border-radius: 5px;
-  width: 160px;
-  box-shadow: 2px 2px 2px black;
+  margin-left: 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 50%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: auto;
+  box-shadow: none;
 }
 
 .logoContainer {
@@ -54,9 +66,17 @@
 }
 
 .logo {
-  border-radius: 50px;
-  height: 50px;
-  margin-left: 30px;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin-left: 0;
+  border: 2px solid rgba(129, 140, 248, 0.3);
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.logoContainer:hover .logo {
+  transform: rotate(360deg);
 }
 
 /* 🍔 Sidebar Menu Button */
@@ -64,29 +84,37 @@
   background: none;
   border: none;
   font-size: 24px;
-  margin-right: 20px;
   cursor: pointer;
-  margin-left: 20px;
-  color: rgb(19, 19, 19);
+  color: #9ca3af;
+  transition: all 0.2s ease;
+  display: none; /* Hidden on desktop */
+  align-items: center;
+  justify-content: center;
 }
 
-/* 📌 Sidebar Styles (Now opens from LEFT) */
+.menuButton:hover {
+  color: #818cf8;
+  transform: scale(1.1);
+}
+
+/* 📌 Sidebar (Slick Slide-Out Drawer) */
 .sidebar {
   position: fixed;
-  top: 67px;
-  right: -250px;
-  /* Now hidden from the left */
-  width: 150px;
-  height: 67vh;
-  background-color: rgba(65, 49, 244, 0.996);
-  color: white;
+  top: 65px;
+  right: -280px;
+  width: 250px;
+  height: calc(100vh - 65px);
+  background: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  color: #e5e7eb;
   display: flex;
   flex-direction: column;
-  padding-top: 10px;
-  border-radius: 3px;
-  transition: right 0.8s ease;
+  padding: 24px 16px;
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 1050;
-  /* Smooth transition */
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25);
 }
 
 .sidebar.open {
@@ -97,22 +125,191 @@
 .navList {
   list-style: none;
   padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .navList li {
-  padding: 15px;
-  text-align: left;
+  padding: 0;
 }
 
 .navList li a {
-  color: white;
+  color: #9ca3af;
   text-decoration: none;
-  font-size: 18px;
-  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
 .navList li a:hover {
-  background-color: #ffffff;
-  border-radius: 2px;
-  color: black;
+  background: rgba(255, 255, 255, 0.05);
+  color: #818cf8;
+  padding-left: 20px;
+}
+
+.navList li a svg, .logoutBtn svg {
+  font-size: 1.1rem;
+  color: #818cf8;
+  transition: transform 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.navList li a:hover svg {
+  color: #22d3ee;
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.logoutBtn svg {
+  color: #ef4444;
+}
+
+.logoutBtn:hover svg {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+/* ---------------- TOP HORIZONTAL NAVIGATION ---------------- */
+.topNav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0 0 0 24px;
+  padding: 0;
+}
+
+.topNav li {
+  padding: 0;
+  display: flex;
+}
+
+.topNav li a, .topNav li button {
+  color: #9ca3af;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  padding: 7px 13px;
+  border-radius: 9999px;
+  transition: all 0.25s ease;
+}
+
+.topNav li a:hover, .topNav li button:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.topNav li a svg, .topNav li button svg {
+  font-size: 1rem;
+  color: #818cf8;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.topNav li a:hover svg, .topNav li button:hover svg {
+  color: #22d3ee;
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.topNav li button.logoutBtn {
+  color: #ef4444 !important;
+  box-shadow: none;
+}
+
+.topNav li button.logoutBtn:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.topNav li button.logoutBtn svg {
+  color: #ef4444;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .topNav {
+    display: none;
+  }
+  .menuButton {
+    display: flex;
+  }
+}
+
+/* Active Highlight Styling */
+.topNav li a.active, .topNav li button.active {
+  color: white !important;
+  background: rgba(129, 140, 248, 0.15) !important;
+  border: 1px solid rgba(129, 140, 248, 0.3) !important;
+  box-shadow: 0 0 12px rgba(129, 140, 248, 0.2);
+}
+
+.topNav li a.active svg, .topNav li button.active svg {
+  color: #22d3ee !important;
+  transform: scale(1.05);
+}
+
+.navList li a.active {
+  color: white !important;
+  background: rgba(129, 140, 248, 0.12) !important;
+  border-left: 3px solid #818cf8 !important;
+  padding-left: 20px !important;
+}
+
+.navList li a.active svg {
+  color: #22d3ee !important;
+}
+
+/* Theme Toggle Button styling */
+.themeToggleBtn {
+  background: none !important;
+  border: none !important;
+  color: #9ca3af !important;
+  font: inherit;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.themeToggleBtn:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #818cf8 !important;
+}
+
+.themeToggleBtn svg {
+  font-size: 1.15rem;
+  color: #f59e0b !important;
+  transition: transform 0.2s ease;
+}
+
+.themeToggleBtn:hover svg {
+  transform: rotate(30deg) scale(1.1);
+}
+
+/* Specific styling when in top Nav */
+.topNav li button.themeToggleBtn {
+  border: 1px solid transparent !important;
+  padding: 7px 13px !important;
+  border-radius: 9999px !important;
+  width: auto !important;
+}
+
+.topNav li button.themeToggleBtn:hover {
+  color: white !important;
+  background: rgba(255, 255, 255, 0.08) !important;
 }

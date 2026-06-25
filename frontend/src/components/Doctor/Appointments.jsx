@@ -29,21 +29,21 @@ function Appointments() {
 
     if (firstBatch.length > 0 && category === "doctor") {
       await fetch(
-        `${window.API_BASE_URL}/api/doctors/appointment/Status/1?userEmail=${userEmail}&number1=0&number2=5`,
+        `${window.API_BASE_URL}/api/doctors/appointment/Status/1?userEmail=${userEmail}&number1=0&number2=4`,
         { method: "POST", headers: { "Content-Type": "application/json" } }
       );
     }
 
     if (firstBatch2.length > 0 && category === "doctor") {
       await fetch(
-        `${window.API_BASE_URL}/api/doctors/appointment/Status/2?userEmail=${userEmail}&number1=5&number2=15`,
+        `${window.API_BASE_URL}/api/doctors/appointment/Status/2?userEmail=${userEmail}&number1=5&number2=9`,
         { method: "POST", headers: { "Content-Type": "application/json" } }
       );
     }
 
     if (firstBatch3.length > 0 && category === "doctor") {
       await fetch(
-        `${window.API_BASE_URL}/api/doctors/appointment/Status/3?userEmail=${userEmail}&number1=15&number2=50`,
+        `${window.API_BASE_URL}/api/doctors/appointment/Status/3?userEmail=${userEmail}&number1=10&number2=99`,
         { method: "POST", headers: { "Content-Type": "application/json" } }
       );
     }

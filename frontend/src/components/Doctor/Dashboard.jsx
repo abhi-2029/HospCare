@@ -76,24 +76,27 @@ export default function Dashboard() {
       const records = patients[zone] || [];
 
       let doctorCount = 0;
+      let patientCount = 0;
 
       records.forEach((r) => {
-        if (r.doctors) doctorCount += r.doctors.length;
-
-        if (r.Medicines) {
+        if (r.doctors) {
+          doctorCount += r.doctors.length;
+        } else if (r.Medicines) {
           r.Medicines.forEach((m) => {
             medicineMap[m.name] =
               (medicineMap[m.name] || 0) + m.noOfTablets;
           });
+        } else {
+          patientCount++;
         }
       });
 
-      totalPatients += records.length;
+      totalPatients += patientCount;
       totalDoctors += doctorCount;
 
       zoneAnalysis.push({
         zone,
-        patients: records.length,
+        patients: patientCount,
         doctors: doctorCount,
       });
     });

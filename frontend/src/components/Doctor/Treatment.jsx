@@ -174,18 +174,6 @@ function Treatment() {
 
       setAllMedicines(updatedMedicines);
 
-      await fetch(`${window.API_BASE_URL}/api/Medical/MedicineUpdate`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          AllMedicines: payload.medicines,
-          zones: zone,
-        }),
-      });
-
       setAssignedMedicines([]);
       setAssignedTests([]);
       alert("✅ Treatment submitted successfully!");

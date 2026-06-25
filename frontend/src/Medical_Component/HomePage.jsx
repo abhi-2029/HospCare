@@ -9,6 +9,7 @@ function HomePage({ login, setlogin }) {
   const [selectedSpecialization, setSelectedSpecialization] = useState(""); 
   const [BookAppointment, setBookAppointment] = useState(false);
   const [selectedDoctor, setSelectedDoctor] = useState(null); // Store selected doctor info
+  const [loading, setLoading] = useState(true);
 
   const specializations = [
     "All", "General Physician", "Cardiologist", "Dermatologist", "Neurologist",
@@ -25,7 +26,7 @@ function HomePage({ login, setlogin }) {
       const storedToken = localStorage.getItem("Token");
       if (!storedToken) {
         setlogin(false);
-        window.location = "/";
+        window.location = "/login";
         return;
       }
       try {
@@ -49,6 +50,8 @@ function HomePage({ login, setlogin }) {
         setFilteredDoctors(data);
       } catch (error) {
         console.error("Error fetching doctors:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -99,7 +102,21 @@ function HomePage({ login, setlogin }) {
 
           <h2 className={styles.title}>Meet Our Doctors</h2>
           <div className={styles.cardContainer}>
-            {filteredDoctors.length > 0 ? (
+            {loading ? (
+              Array.from({ length: 3 }).map((_, idx) => (
+                <div key={idx} className={`${styles.skeletonCard} ${styles.shimmerEffect}`}>
+                  <div className={styles.shimmerImage}></div>
+                  <div className={styles.shimmerInfoGroup}>
+                    <div className={styles.shimmerLine}></div>
+                    <div className={styles.shimmerLine}></div>
+                    <div className={styles.shimmerLine}></div>
+                    <div className={styles.shimmerLine}></div>
+                    <div className={styles.shimmerLine}></div>
+                  </div>
+                  <div className={styles.shimmerAction}></div>
+                </div>
+              ))
+            ) : filteredDoctors.length > 0 ? (
               filteredDoctors.map((doctor) => (
                 <div key={doctor._id} className={styles.card}>
                   <div className={styles.doctprofile}>
@@ -142,7 +159,11 @@ function HomePage({ login, setlogin }) {
                 </div>
               ))
             ) : (
-              <p className={styles.noData}>No doctors available.</p>
+              <div className={styles.emptyState}>
+                <span className={styles.emptyIcon}>🔍</span>
+                <h3 className={styles.emptyText}>No Doctors Found</h3>
+                <p className={styles.emptySubtext}>We couldn't find any medical specialists matching "{selectedSpecialization}". Try checking another category.</p>
+              </div>
             )}
             </div>
             

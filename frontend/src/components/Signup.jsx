@@ -68,12 +68,20 @@ function SignUp() {
     console.log("Submitting form with data:", formData);
 
     try {
+      const data = new FormData();
+      Object.keys(formData).forEach((key) => {
+        if (key === "profilePic") {
+          if (formData.profilePic) {
+            data.append("profilePic", formData.profilePic);
+          }
+        } else if (key !== "profilePicPreview") {
+          data.append(key, formData[key]);
+        }
+      });
+
       const response = await fetch(`${window.API_BASE_URL}/api/auth/signup`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        body: data,
       });
 
       const result = await response.json();

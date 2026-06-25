@@ -1,222 +1,86 @@
-/* 🌍 General Styles */
+/* 🌍 General Container Layout */
 .coverContainer {
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
+  width: 100%;
+  max-width: 100% !important;
+  margin: 0;
+  padding: 0 !important;
   text-align: center;
+  background-color: var(--bg-primary);
 }
 
-/* 🔄 Carousel Styles */
+/* 🔄 Carousel / Slider Overhaul */
 .carousel {
-  margin-top: 10px;
+  width: 100%;
+  max-height: 600px;
+  overflow: hidden;
+  position: relative;
 }
 
 .carousel img {
   width: 100%;
-  height: 450px;
+  height: 550px;
   object-fit: cover;
-  border-radius: 10px;
+  filter: brightness(0.7);
+  transition: transform 8s ease;
 }
 
-.carousel-caption {
-  background: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  border-radius: 8px;
+.carousel:hover img {
+  transform: scale(1.05);
 }
 
-/* 🏥 Main Content */
-main {
-  padding: 50px 20px;
+.carousel :global(.carousel-caption) {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 24px 32px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  bottom: 10%;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #333;
+.carousel :global(.carousel-caption) h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.lead {
-  font-size: 1.2rem;
-  color: #555;
+.carousel :global(.carousel-caption) p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin-bottom: 0;
 }
 
-.btn-primary {
-  background-color: #007bff;
-  border: none;
-  padding: 12px 24px;
-  font-size: 1rem;
-  border-radius: 8px;
-  transition: background 0.3s ease;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-}
-
-/* 👩‍⚕️ Doctors Section */
-.doctorsSection {
-  background-color: #f8f9fa;
-  padding: 50px 20px;
-  border-radius: 8px;
-}
-
-.doctorsSection h2 {
-  font-size: 2rem;
-  margin-bottom: 30px;
-}
-
-/* 📌 Doctors Grid (Flexible Layout) */
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-}
-
-.col-lg-4 {
-  flex: 1;
-  max-width: 300px;
-  text-align: center;
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-}
-
-.col-lg-4:hover {
-  transform: translateY(-5px);
-}
-
-.col-lg-4 img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  border: 4px solid #007bff;
-}
-
-.col-lg-4 h3 {
-  margin-top: 15px;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.col-lg-4 p {
-  font-size: 1.1rem;
-  color: #555;
-}
-
-/* 📌 Footer */
-.footer {
-  background-color: #212529;
-  color: white;
-  padding: 20px 0;
-  margin-top: 40px;
-}
-
-.footer a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
-
-.main_container{
+/* 🏥 Main Layout Stack */
+.main_container {
   display: flex;
   flex-direction: column;
-}
-.container1 {
-  display: flex;
-  gap: 1rem;
-  margin-top: 20px ;
-  border: 1px solid rgba(21, 1, 17, 0);
-  background-color: rgba(37, 18, 244, 0.855);
+  gap: 60px;
+  padding: 40px 24px;
 }
 
-.container1 img {
-  width: 400px;
-  height: auto;
-  object-fit: contain;
-}
-
-.info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 1 1 47%;
-  width: 50%;
-  height: auto;
-  padding: 5px;
-  
-}
-
-.icon {
-  font-size: 90px;
-  margin-right: 40%;
-  color: rgb(111, 10, 10);
-}
-
-.txt {
-  color: white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 50px;
-  text-align: center;
-}
-
-.ptxt {
-  font-size: 20px;
-  font-family: cursive;
-}
-
-.btm {
-  background-color: rgba(122, 24, 125, 0.352);
-  border: 1px solid rgba(242, 49, 249, 0.352);
-  border-radius: 5px;
-  color: white;
-}
-
+/* 🏥 Container 2: Hero Section (Committed to You) */
 .container2 {
   background-image: url('../assets/bann2.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  margin-top: 20px ;
-  height: 20lh;
+  border-radius: 24px;
+  padding: 80px 40px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.icon2{
-  text-align: center;
-  font-size: 80px;
-  color: rgba(244, 18, 22, 0.855);
-
-}
-.txt2{
-  text-align: center;
-  font-size: 80px;
-  color: rgba(43, 43, 244, 0.855);
-}
-
-.ptxt2{
-  text-align: center;
-  margin-left: 10%;
-  margin-right: 10%;
-  font-size:21px;
-}
-.btm2{
-  justify-content: center;
-  background-color: rgba(37, 18, 244, 0.855);
-  color: white;
-  border-radius: 5px;
-}
 .container2::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(255, 254, 254, 0.6); 
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(3, 7, 18, 0.75) 100%);
   z-index: 1;
 }
 
@@ -224,381 +88,268 @@ h1 {
   position: relative;
   z-index: 2;
 }
-.container3{
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(37, 18, 244, 0.855);
-  margin-top: 20px ;
+
+.icon2 {
+  font-size: 64px;
+  color: #f43f5e;
+  margin-bottom: 20px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.txt2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+
+.ptxt2 {
+  max-width: 800px;
+  margin: 0 auto 32px auto;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: #94a3b8;
+}
+
+.btm2 {
+  background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
   color: white;
+  border: none;
+  padding: 14px 36px;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-.heading{
-  font-size: 35px;
-  margin-left: 6%;
+
+.btm2:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(79, 70, 229, 0.6);
+  background: linear-gradient(135deg, #6366f1 0%, #0891b2 100%);
 }
-.intro{
-  font-size: 15px;
-  margin-left: 6%;
+
+.container3 {
+  background: var(--bg-card);
+  border-radius: 24px;
+  padding: 60px 40px;
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-card);
 }
-.cards{
+
+.heading {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.intro {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+
+.cards {
   display: flex;
   flex-wrap: wrap;
+  gap: 24px;
   justify-content: center;
-  margin-left: 5px;
 }
-.card{
-  background-color: white;
-  width: 240px;
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  width: 250px;
   height: 250px;
-  margin: 30px;
+  padding: 24px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-}
-.card_img{
-  width: 50px;
-  margin-bottom: 20%;
-}
-.card_text{
-  font-size: 20px;
-  margin-bottom: 10%;
-  color:black;
-}
-
-/* DoctorCards.module.css */
-
-.container4{
-  background-color: rgb(65, 49, 244);
-  margin-top: 20px ;
-}
-.intro2{
-  color: white;
-  font-size: 50px;
-  text-align: center;
-}
-.doctorContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-  padding: 2rem;
-  background-color: rgba(66, 49, 244, 0.763);
-}
-
-.doctorCard {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
   position: relative;
-  border-radius: 15px;
-  padding: 1rem;
-  max-width: 260px;
-  text-align: center;
-  background: transparent;
   overflow: hidden;
 }
 
-.doctorCard::before {
+.card::before {
   content: "";
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 75%;
-  border-radius: 25px;
-  background-color: #f0f0f0; /* change as needed */
-  z-index: 0;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.doctorCard * {
-  position: relative;
-  z-index: 1;
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(129, 140, 248, 0.4);
+  box-shadow: 0 10px 30px rgba(79, 70, 229, 0.15);
 }
 
+.card:hover::before {
+  opacity: 1;
+}
 
-.infocard{
-  border-radius: 12px;
-  padding: 1rem;
-  max-width: 260px;
-  height: 300px;
+.card_img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card_img {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.card_text {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 16px 0;
+  z-index: 2;
+}
+
+.card svg {
+  color: #818cf8;
+  font-size: 20px;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.card:hover svg {
+  color: #22d3ee;
+}
+
+/* 👩‍⚕️ Container 4: Meet our Doctors */
+.container4 {
+  background: var(--bg-primary);
+  border-radius: 24px;
+  padding: 60px 40px;
+  border: 1px solid var(--border-card);
+}
+
+.intro2 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 40px;
+}
+
+.doctorContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  justify-content: center;
+}
+
+.doctorCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 20px;
+  padding: 24px;
+  width: 280px;
   text-align: center;
-  padding-top: 10px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.doctorCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(129, 140, 248, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .doctorImage {
-  width: 85%;
-  height: 200px;
+  width: 140px;
+  height: 140px;
   object-fit: cover;
-  border:1px solid violet;
-  border-radius: 100%;
-  padding: 5px;
-  z-index: 999;
+  border-radius: 50%;
+  border: 3px solid rgba(129, 140, 248, 0.2);
+  padding: 4px;
+  margin: 0 auto 20px auto;
+  transition: border-color 0.3s ease;
+}
+
+.doctorCard:hover .doctorImage {
+  border-color: #818cf8;
+}
+
+.infocard {
+  text-align: center;
 }
 
 .doctorName {
-  font-size: 1.5rem;
-  color: #333;
-  margin: 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
 }
 
 .doctorSpeciality {
-  color: #880e4f;
-  font-weight: bold;
+  color: #38bdf8;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
 }
 
 .doctorAddress {
-  font-size: 0.9rem;
-  color: #666;
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 12px;
 }
 
 .doctorIntro {
-  margin-top: 0.5rem;
-  font-size: 0.95rem;
-  color: #444;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
 }
 
-
-/* Responsive for smaller screens */
+/* 📱 RESPONSIVE MEDIA QUERIES */
 @media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .container img {
-    width: 100%;
-    max-width: 340px;
-    margin: 0 auto;
-  }
-
-  .info {
-    width: 100%;
-  }
-
-  .icon {
-    font-size: 60px;
-    margin-right: 0;
-  }
-
-  .txt {
-    font-size: 35px;
-  }
-
-  .ptxt {
-    font-size: 18px;
-    text-align: center;
-  }
-
-  .btm {
-    font-size: 14px;
-    padding: 4px 8px;
-  }
-}
-@media (max-width: 768px) {
-  .container1 {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .container1 img {
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-
-  .info {
-    width: 100%;
-  }
-
-  .icon {
-    font-size: 60px;
-    margin-right: 0;
-  }
-
-  .txt {
-    font-size: 35px;
-  }
-
-  .ptxt {
-    font-size: 18px;
-    text-align: center;
-  }
-
-  .btm {
-    font-size: 14px;
-    padding: 4px 8px;
-  }
-
-  .container2 {
-    height: auto;
-    padding: 20px 0;
-  }
-
-  .icon2 {
-    font-size: 50px;
+  .carousel img {
+    height: 380px;
   }
 
   .txt2 {
-    font-size: 40px;
-  }
-
-  .ptxt2 {
-    font-size: 16px;
-    margin: 0 5%;
-  }
-
-  .btm2 {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    font-size: 14px;
-    padding: 6px 12px;
-    width: fit-content;
-  }
-}
-
-
-/* 📱 RESPONSIVE DESIGN */
-@media screen and (max-width: 1024px) {
-
-  /* 🖥️ Tablets & Small Screens */
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  .carousel img {
-    height: 400px;
-  }
-
-  .doctorsSection h2 {
-    font-size: 1.8rem;
-  }
-
-  .row {
-    gap: 20px;
-  }
-
-  .col-lg-4 {
-    max-width: 260px;
-    padding: 15px;
-  }
-
-  .col-lg-4 img {
-    width: 120px;
-    height: 120px;
-  }
-
-  .col-lg-4 h3 {
-    font-size: 1.4rem;
-  }
-
-  .col-lg-4 p {
-    font-size: 1rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-
-  /* 📱 Mobile Devices */
-  .carousel {
-    margin-top: 60px;
-  }
-
-  .carousel img {
-    height: 300px;
-  }
-
-  h1 {
     font-size: 2rem;
   }
 
-  .lead {
+  .ptxt2 {
     font-size: 1rem;
+    padding: 0 10px;
   }
 
-  .btn-primary {
-    font-size: 0.9rem;
-    padding: 10px 20px;
+  .container2 {
+    padding: 50px 20px;
   }
 
-  .doctorsSection {
-    padding: 30px 15px;
+  .container3, .container4 {
+    padding: 40px 20px;
   }
 
-  .doctorsSection h2 {
-    font-size: 1.6rem;
-  }
-
-  .row {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .col-lg-4 {
-    max-width: 100%;
-  }
-
-  .col-lg-4 img {
-    width: 100px;
-    height: 100px;
-  }
-
-  .col-lg-4 h3 {
-    font-size: 1.3rem;
-  }
-
-  .col-lg-4 p {
-    font-size: 0.9rem;
-  }
-
-  .footer {
-    text-align: center;
-    padding: 15px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-
-  /* 📱 Small Mobile Screens */
-  .carousel img {
-    height: 250px;
-  }
-
-  h1 {
+  .heading, .intro2 {
     font-size: 1.8rem;
   }
-
-  .lead {
-    font-size: 0.9rem;
-  }
-
-  .btn-primary {
-    font-size: 0.8rem;
-    padding: 8px 16px;
-  }
-
-  .doctorsSection {
-    padding: 20px 10px;
-  }
-
-  .doctorsSection h2 {
-    font-size: 1.4rem;
-  }
-
-  .col-lg-4 img {
-    width: 90px;
-    height: 90px;
-  }
-
-  .col-lg-4 h3 {
-    font-size: 1.2rem;
-  }
-
-  .col-lg-4 p {
-    font-size: 0.85rem;
-  }
-
-  .footer {
-    padding: 10px;
-  }
 }
-

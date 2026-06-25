@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { FaBars, FaTimes, FaHome, FaUserMd, FaCalendarCheck, FaInfoCircle, FaThLarge, FaUserCircle, FaSignInAlt, FaSignOutAlt, FaSun, FaMoon } from "react-icons/fa";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import styles from "../CSS/Navbar.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import imgage from "../assets/HospCare.png";
@@ -12,7 +12,21 @@ function Navbar({ login, setlogin }) {
   const [userCategory, setUserCategory] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "light";
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === "light" ? "dark" : "light"));
+  };
+
   const navigate = useNavigate();
+  const location = useLocation();
 
   // ---------------- FETCH USER ----------------
   useEffect(() => {
@@ -78,6 +92,101 @@ function Navbar({ login, setlogin }) {
     navigate("/", { replace: true });
   };
 
+  const renderLinks = (isSidebar = false) => {
+    const clickHandler = () => {
+      if (isSidebar) setSidebarOpen(false);
+    };
+
+    const isActive = (path) => location.pathname === path;
+
+    return (
+      <>
+        {userCategory === "medical" ? (
+          <>
+            <li>
+              <Link to="/" onClick={clickHandler} className={isActive("/") ? styles.active : ""}>
+                <FaHome /> Home
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/dashboard" onClick={clickHandler} className={isActive("/dashboard") ? styles.active : ""}>
+                <FaThLarge /> Dashboard
+              </Link>
+            </li>
+
+            <li>
+              <button onClick={Logout} className={styles.logoutBtn}>
+                <FaSignOutAlt /> Logout
+              </button>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <Link to="/" onClick={clickHandler} className={isActive("/") ? styles.active : ""}>
+                <FaHome /> Home
+              </Link>
+            </li>
+
+            {userCategory !== "doctor" && (
+              <li>
+                <Link to="/Doctors" onClick={clickHandler} className={isActive("/Doctors") ? styles.active : ""}>
+                  <FaUserMd /> Doctors
+                </Link>
+              </li>
+            )}
+
+            <li>
+              <Link to="/appointment" onClick={clickHandler} className={isActive("/appointment") ? styles.active : ""}>
+                <FaCalendarCheck /> Appointment
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/about" onClick={clickHandler} className={isActive("/about") ? styles.active : ""}>
+                <FaInfoCircle /> About
+              </Link>
+            </li>
+
+            {(userCategory === "admin" || userCategory === "medical") && (
+              <li>
+                <Link to="/dashboard" onClick={clickHandler} className={isActive("/dashboard") ? styles.active : ""}>
+                  <FaThLarge /> Dashboard
+                </Link>
+              </li>
+            )}
+
+            <li>
+              <Link to="/profile" onClick={clickHandler} className={isActive("/profile") ? styles.active : ""}>
+                <FaUserCircle /> Profile
+              </Link>
+            </li>
+
+            {login ? (
+              <li>
+                <button onClick={Logout} className={styles.logoutBtn}>
+                  <FaSignOutAlt /> Logout
+                </button>
+              </li>
+            ) : (
+              <li>
+                <Link to="/login" onClick={clickHandler} className={isActive("/login") ? styles.active : ""}>
+                  <FaSignInAlt /> Login
+                </Link>
+              </li>
+            )}
+          </>
+        )}
+        <li>
+          <button onClick={toggleTheme} className={styles.themeToggleBtn} aria-label="Toggle theme">
+            {theme === "light" ? <FaMoon /> : <FaSun />} {theme === "light" ? "Dark" : "Light"}
+          </button>
+        </li>
+      </>
+    );
+  };
+
   return (
     <div className={styles.navContainer}>
       {/* ---------------- LOGO ---------------- */}
@@ -94,10 +203,15 @@ function Navbar({ login, setlogin }) {
         HospCare.com
       </div>
 
-      {/* ---------------- SEARCH BAR ---------------- */}
+      {/* ---------------- SEARCH BAR / SPACER ---------------- */}
       <div className={styles.searchBar}></div>
 
-      {/* ---------------- MENU BUTTON ---------------- */}
+      {/* ---------------- TOP NAVIGATION (Desktop Only) ---------------- */}
+      <ul className={styles.topNav}>
+        {renderLinks(false)}
+      </ul>
+
+      {/* ---------------- MENU BUTTON (Mobile Only) ---------------- */}
       <button
         className={styles.menuButton}
         onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -105,129 +219,14 @@ function Navbar({ login, setlogin }) {
         {sidebarOpen ? <FaTimes /> : <FaBars />}
       </button>
 
-      {/* ---------------- SIDEBAR ---------------- */}
+      {/* ---------------- SIDEBAR (Mobile Only) ---------------- */}
       <div
         className={`${styles.sidebar} ${
           sidebarOpen ? styles.open : ""
         }`}
       >
         <ul className={styles.navList}>
-
-          {/* ---------------- MEDICAL USER ---------------- */}
-          {userCategory === "medical" ? (
-            <>
-              <li>
-                <Link
-                  to="/"
-                  onClick={() => setSidebarOpen(false)}
-                >
-                  Home
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  to="/dashboard"
-                  onClick={() => setSidebarOpen(false)}
-                >
-                  Dashboard
-                </Link>
-              </li>
-
-              <li>
-                <button
-                  onClick={Logout}
-                  className={styles.logoutBtn}
-                >
-                  Logout
-                </button>
-              </li>
-            </>
-          ) : (
-            <>
-              {/* ---------------- NORMAL USERS ---------------- */}
-
-              <li>
-                <Link
-                  to="/"
-                  onClick={() => setSidebarOpen(false)}
-                >
-                  Home
-                </Link>
-              </li>
-
-              {/* Hide Doctors for doctor category */}
-              {userCategory !== "doctor" && (
-                <li>
-                  <Link
-                    to="/Doctors"
-                    onClick={() => setSidebarOpen(false)}
-                  >
-                    Doctors
-                  </Link>
-                </li>
-              )}
-
-              <li>
-                <Link
-                  to="/appointment"
-                  onClick={() => setSidebarOpen(false)}
-                >
-                  Appointment
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  to="/about"
-                  onClick={() => setSidebarOpen(false)}
-                >
-                  About
-                </Link>
-              </li>
-
-              {(userCategory === "admin" ||
-                userCategory === "medical") && (
-                <li>
-                  <Link
-                    to="/dashboard"
-                    onClick={() => setSidebarOpen(false)}
-                  >
-                    Dashboard
-                  </Link>
-                </li>
-              )}
-
-              <li>
-                <Link
-                  to="/profile"
-                  onClick={() => setSidebarOpen(false)}
-                >
-                  Profile
-                </Link>
-              </li>
-
-              {login ? (
-                <li>
-                  <button
-                    onClick={Logout}
-                    className={styles.logoutBtn}
-                  >
-                    Logout
-                  </button>
-                </li>
-              ) : (
-                <li>
-                  <Link
-                    to="/login"
-                    onClick={() => setSidebarOpen(false)}
-                  >
-                    Login
-                  </Link>
-                </li>
-              )}
-            </>
-          )}
+          {renderLinks(true)}
         </ul>
       </div>
     </div>

@@ -17,6 +17,7 @@ import Appointments from "./components/Doctor/Appointments";
 import Treatment from "./components/Doctor/Treatment";
 import Dashboard from "./components/Doctor/Dashboard";
 import ChatBot from "./Medical_Component/ChatBot.jsx";
+import ProtectedRoute from "./components/ui/ProtectedRoute.jsx";
 
 // Styles
 import styles from "./CSS/App.module.css";
@@ -79,15 +80,24 @@ function App() {
             />
 
             {/* Appointments */}
-            <Route path="/appointment" element={<Appointments />} />
+            <Route
+              path="/appointment"
+              element={
+                <ProtectedRoute>
+                  <Appointments />
+                </ProtectedRoute>
+              }
+            />
 
             {/* Doctors */}
             <Route
               path="/Doctors"
               element={
-                <DelayedComponent delay={700}>
-                  <HomePage login={login} setlogin={setLogin} />
-                </DelayedComponent>
+                <ProtectedRoute>
+                  <DelayedComponent delay={700}>
+                    <HomePage login={login} setlogin={setLogin} />
+                  </DelayedComponent>
+                </ProtectedRoute>
               }
             />
 
@@ -125,9 +135,11 @@ function App() {
             <Route
               path="/dashboard"
               element={
-                <DelayedComponent delay={1500}>
-                  <Dashboard login={login} setlogin={setLogin} />
-                </DelayedComponent>
+                <ProtectedRoute>
+                  <DelayedComponent delay={1500}>
+                    <Dashboard login={login} setlogin={setLogin} />
+                  </DelayedComponent>
+                </ProtectedRoute>
               }
             />
 
@@ -135,14 +147,23 @@ function App() {
             <Route
               path="/profile"
               element={
-                <DelayedComponent delay={1500}>
-                  <Profile login={login} setlogin={setLogin} />
-                </DelayedComponent>
+                <ProtectedRoute>
+                  <DelayedComponent delay={1500}>
+                    <Profile login={login} setlogin={setLogin} />
+                  </DelayedComponent>
+                </ProtectedRoute>
               }
             />
 
             {/* Treatment Page */}
-            <Route path="/appointment/treatment" element={<Treatment />} />
+            <Route
+              path="/appointment/treatment"
+              element={
+                <ProtectedRoute>
+                  <Treatment />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </div>
       </div>
