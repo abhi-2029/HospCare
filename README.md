@@ -48,12 +48,15 @@ graph TD
 ### 💻 Frontend (React SPA)
 *   **👤 Intuitive Patient Portal**: Check medical records, fill symptoms logs, book consultations, and view real-time feedback.
 *   **🩺 Doctor Dashboard**: View scheduled appointments, review patient records, and submit treatments and prescriptions.
-*   **💬 AI Medical Chatbot**: A premium conversational helper to check symptoms, answer common health questions, and guide patients.
+*   **💬 AI Medical Chatbot**: A premium glassmorphic chatbot supporting natural **Hinglish** and English symptoms checkers.
+*   **🎨 Dynamic Light & Dark Modes**: Complete global CSS variables theme switching system with state saved in `localStorage`.
+*   **⏳ Shimmer Loaders & Empty States**: Polished loading placeholder states and descriptive custom illustration alerts for search mismatches.
 *   **📊 Analytics & Visualizations**: Dynamic health tracking, vitals charts, and metrics utilizing Chart.js and Recharts.
 *   **✨ Smooth UX/UI**: Animated transitions powered by Framer Motion and a responsive interface designed using a blend of Bootstrap and Tailwind CSS.
 
 ### 🛡️ Backend REST API (Node.js + Express)
 *   **🔑 Secure Authentication**: JWT-based user session management with password hashing via Bcrypt.
+*   **🛡️ Clinical Safety Overrides**: Deterministic guardrails matching symptom/disease identification to verified prescriptions for complete accuracy.
 *   **🧠 Gemini AI Integration**: Powered by `@google/generative-ai` for intelligent medical responses and advice.
 *   **✉️ Email Notifications**: Automatic appointment booking confirmations and medical notifications using Nodemailer.
 *   **🗄️ Structured Schemas**: Data models for Users (Patients/Doctors), Hospitals, Districts, States, Appointments, and Alerts.
@@ -167,11 +170,16 @@ HospCare/
    ```bash
    npm install
    ```
-3. Start the Vite development server:
+3. Configure frontend Environment Variables by creating a `.env` file inside the `frontend` folder:
+   ```env
+   VITE_API_URL=http://localhost:5000
+   ```
+4. Start the Vite development server:
    ```bash
    npm run dev
    ```
    *Access the web application at `http://localhost:5173`*
+
 
 ---
 
