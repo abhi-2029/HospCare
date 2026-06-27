@@ -5,10 +5,12 @@ services:
     env: python
     rootDir: AI/ML
     buildCommand: pip install -r requirements_flask_api.txt
-    startCommand: python medicine_prediction_flask_api.py
+    startCommand: gunicorn medicine_prediction_flask_api:app
     envVars:
       - key: PORT
         value: 10000
+      - key: PYTHON_VERSION
+        value: 3.11.9
 
   # 2. Node.js Express Backend Service
   - type: web
