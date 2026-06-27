@@ -11,6 +11,9 @@ import MedicineChatBot from "./controller/MedicineChatBot.js";
 import getMedicineDetails from "./utils/medicineDetails.js";
 dotenv.config();
 
+// Connect to MongoDB (important for serverless platforms where app.listen callback does not run)
+connectDB().catch((err) => console.error("Database connection failure:", err));
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -146,3 +149,5 @@ app.listen(PORT, async () => {
   console.log(`Server is running on http://localhost:${PORT}`);
   
 });
+
+export default app;
