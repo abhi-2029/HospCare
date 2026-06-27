@@ -6,9 +6,10 @@
   <img src="https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js Badge" />
   <img src="https://img.shields.io/badge/Express.js-4.21-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express Badge" />
   <img src="https://img.shields.io/badge/MongoDB-6.15-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB Badge" />
-  <img src="https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python Badge" />
+  <img src="https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python Badge" />
   <img src="https://img.shields.io/badge/Flask-3.0-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask Badge" />
-  <img src="https://img.shields.io/badge/Gemini_AI-API-8E75C2?style=for-the-badge&logo=google&logoColor=white" alt="Gemini Badge" />
+  <img src="https://img.shields.io/badge/Hugging_Face-Spaces-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" alt="Hugging Face Badge" />
+  <img src="https://img.shields.io/badge/Vercel-Deployment-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel Badge" />
 </p>
 
 HospCare is a modern, comprehensive, and intelligent Hospital Management System. It connects patients, doctors, and hospital administrators in a unified platform, utilizing Machine Learning and Generative AI to provide automated diagnostic assistance, medicine prescription predictions, and seamless appointment scheduling.
@@ -22,12 +23,12 @@ Below is the layout of how the frontend, backend, database, and machine learning
 ```mermaid
 graph TD
     subgraph Client Layer
-        A[React Frontend <br> Vite + Tailwind + Bootstrap]
+        A[React Frontend <br> Deployed on Vercel]
     end
 
     subgraph Service Layer
-        B[Node.js Express Backend <br> JWT Authentication]
-        D[Flask AI Engine <br> Random Forest Models]
+        B[Node.js Express Backend <br> Deployed on Vercel Serverless]
+        D[Flask AI Engine <br> Deployed on Hugging Face Spaces]
     end
 
     subgraph Database & AI Layer
@@ -73,6 +74,7 @@ graph TD
 ```text
 HospCare/
 ├── AI/ML/                                  # Machine Learning components
+│   ├── Dockerfile                          # Deployment image definition
 │   ├── medicine_prescription_predictor.py  # Model training script
 │   ├── medicine_prediction_flask_api.py    # Flask REST API server
 │   ├── medicine_prediction_api.py          # Python client library
@@ -80,6 +82,7 @@ HospCare/
 │   ├── requirements_flask_api.txt          # Python packages
 │   └── *.pkl                               # Trained models (serialized)
 ├── backend/                                # Node.js + Express API
+│   ├── vercel.json                         # Serverless configuration
 │   ├── controller/                         # Route handlers & logic
 │   ├── models/                             # Mongoose database models
 │   ├── routes/                             # Express route configurations
@@ -180,6 +183,16 @@ HospCare/
    ```
    *Access the web application at `http://localhost:5173`*
 
+
+---
+
+## 🌐 Deployment & Hosting Architecture
+
+HospCare is designed for containerized and serverless hosting to optimize costs and deployment reliability:
+
+*   **🤖 AI/ML Model Engine**: Deployed as a Docker container on **Hugging Face Spaces** for free, high-performance CPU inference.
+*   **🛡️ Backend REST API**: Configured and optimized for serverless execution on **Vercel** as serverless functions.
+*   **💻 Frontend App**: Built with Vite and Tailwind, deployed directly to **Vercel** and configured to target the serverless backend.
 
 ---
 
